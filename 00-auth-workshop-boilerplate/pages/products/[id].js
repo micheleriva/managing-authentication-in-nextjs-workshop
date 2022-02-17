@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import Rating from 'react-star-ratings';
 
 export async function getServerSideProps({ query }) {
@@ -47,7 +48,9 @@ export default function ProductPage({ product }) {
           {product.description}
         </div>
         <div className='mt-5'>
-          <button className='bg-sky-900 text-white font-bold py-2 px-4 rounded-md hover:bg-sky-700'> Add to cart </button>
+          <Link href='/login' passHref>
+            <button className='bg-sky-900 text-white font-bold py-2 px-4 rounded-md hover:bg-sky-700'> Add to cart </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -9,12 +9,14 @@ export function NavBar() {
           <a className='text-2xl font-bold'> ecommerce </a>
         </Link>
 
-        <button className='flex justify-center'>
-          <FaUser className='w-6 h-6 mr-3' />
-          <span className='font-bold text-lg'>
-            Login
-          </span>
-        </button>
+        <Link href='/login' passHref>
+          <a className='flex justify-center'>
+            <FaUser className='w-6 h-6 mr-3' />
+            <span className='font-bold text-lg'>
+              Login
+            </span>
+          </a>
+        </Link>
       </div>
     </div>
   )
