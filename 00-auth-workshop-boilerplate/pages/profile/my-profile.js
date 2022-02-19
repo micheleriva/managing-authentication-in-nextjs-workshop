@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
+import { gql } from "graphql-request";
+import client from "../../lib/graphql";
+
+async function getProfile(userID) {
+  const { user } = await client.request(gql`
+    query GetUser($id: uuid!) {
+      user(where: {id: {_eq: $id}}) {
+        id
+        name
+        address
+      }
+    }
+  `, { id: userID });
+
+  return user.shift();
+}
 
 export default function recentOrders() {
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    fetch("/api/profile?id=1")
-      .then((data) => data.json())
-      .then((data) => setProfile(data.user))
+    getProfile("ff88a7aa-1f14-4f9e-a31e-99faf9ac9147")
+      .then((data) => setProfile(data))
       .catch(console.log);
   }, []);
 
