@@ -48,6 +48,9 @@ export default function ProductPage({ product }) {
           {product.description}
         </div>
         <div className='mt-5'>
+          <span className='mr-2 font-bold text-lg text-sky-900'>
+            ${product.price.toFixed(2)}
+          </span>
           <Link href='/login' passHref>
             <button className='bg-sky-900 text-white font-bold py-2 px-4 rounded-md hover:bg-sky-700'> Add to cart </button>
           </Link>
