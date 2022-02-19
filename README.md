@@ -1,0 +1,1 @@
+# Managing Authentication in Next.js Workshop - Node Congress
