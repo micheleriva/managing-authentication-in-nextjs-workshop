@@ -1,15 +1,26 @@
+import { gql } from "graphql-request";
+import client from "../lib/graphql";
 import { ProductCard } from "../components/ProductCard";
 
 export async function getServerSideProps() {
-  const { HOST } = process.env;
-  const productsReq = await fetch(`${HOST}/api/products`);
-  const productsData = await productsReq.json();
+  const { product } = await client.request(gql`
+    query GetAllProducts {
+      product {
+        id
+        image
+        price
+        rating
+        category
+        title
+      }
+    }
+  `);
 
   return {
     props: {
-      products: productsData
-    }
-  }
+      products: product,
+    },
+  };
 }
 
 export default function Home(props) {
@@ -19,5 +30,5 @@ export default function Home(props) {
         <ProductCard key={product.id} {...product} />
       ))}
     </div>
-  )
+  );
 }
